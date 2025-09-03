@@ -1,0 +1,1137 @@
+/* Demo Container */
+.demoContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header h1 {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.125rem;
+  margin: 0 0 1rem 0;
+}
+
+.status {
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+.warning {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #fbbf24;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.loading p {
+  margin: 1rem 0 0 0;
+  color: #64748b;
+  font-size: 1.125rem;
+}
+
+/* Payment active state */
+.paymentActive {
+  padding: 20px;
+  text-align: center;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.elementInfo {
+  margin-top: 10px;
+  padding: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #495057;
+}
+
+/* Native wrapper styles */
+.wrapperContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.configSection,
+.statusSection,
+.paymentSection,
+.actionSection,
+.intentSection {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.configSection h4,
+.statusSection h4,
+.paymentSection h4,
+.actionSection h4,
+.intentSection h4 {
+  margin: 0 0 15px 0;
+  color: #1a202c;
+  font-size: 18px;
+}
+
+.configControls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.configControls label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.configControls input,
+.configControls select {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.statusItem {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.statusSuccess {
+  background: #f0fff4;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.statusPending {
+  background: #fffaf0;
+  color: #c05621;
+  border: 1px solid #fbd38d;
+}
+
+.errorDisplay {
+  margin-top: 15px;
+  padding: 12px;
+  background: #fed7d7;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+  border-radius: 4px;
+}
+
+.nativeContainer {
+  position: relative;
+  min-height: 200px;
+  transition: all 0.3s ease;
+}
+
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px 24px;
+  background: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  background: #2c5aa0;
+}
+
+.btn:disabled {
+  background: #cbd5e0;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  padding: 12px 24px;
+  background: #e2e8f0;
+  color: #4a5568;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: #cbd5e0;
+}
+
+.intentDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.intentDetails > div {
+  padding: 8px;
+  background: #f7fafc;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Native demo specific styles */
+.nativeDemoContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.demoHeader {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.demoHeader h1 {
+  margin: 0 0 10px 0;
+  color: #1a202c;
+  font-size: 32px;
+}
+
+.demoHeader .subtitle {
+  color: #4a5568;
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+
+.demoHeader .warning {
+  background: #fff3cd;
+  color: #856404;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: 1px solid #ffeaa7;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.nativeSection {
+  background: #f8f9fa;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.architectureSection {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.architectureSection h3 {
+  margin: 0 0 20px 0;
+  color: #1a202c;
+  font-size: 24px;
+}
+
+.architectureInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.architectureItem {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #3182ce;
+}
+
+.architectureItem h4 {
+  margin: 0 0 10px 0;
+  color: #2d3748;
+  font-size: 16px;
+}
+
+.architectureItem p {
+  margin: 0 0 15px 0;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.architectureItem ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #4a5568;
+  font-size: 13px;
+}
+
+.architectureItem li {
+  margin-bottom: 5px;
+}
+
+/* Demo mode selector */
+.modeSelector {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modeButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.modeBtn {
+  padding: 12px 20px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: #4a5568;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 200px;
+}
+
+.modeBtn:hover {
+  border-color: #3182ce;
+  color: #3182ce;
+}
+
+.modeActive {
+  border-color: #3182ce !important;
+  background: #3182ce !important;
+  color: white !important;
+}
+
+.modeDescription {
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.modeDescription p {
+  margin: 0;
+}
+
+.loadingContainer,
+.reactDemoContainer {
+  background: white;
+}
+
+/* Spinner */
+.spinner, .btnSpinner, .processingSpinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.btnSpinner {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+  margin-right: 0.5rem;
+}
+
+.processingSpinner {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Demo Wrapper */
+.demoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Sections */
+.section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.sectionTitle {
+  margin: 0 0 1.5rem 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Configuration Panel */
+.configPanel {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 0;
+  border: 2px solid #e2e8f0;
+}
+
+.configGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.configGroup {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.groupTitle {
+  margin: 0 0 1rem 0;
+  color: #374151;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.hint {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input:disabled, .select:disabled {
+  background-color: #f9fafb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.inputHint {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.colorInputGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.colorInput {
+  width: 60px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.colorTextInput {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.checkbox {
+  width: auto;
+  margin-right: 0.5rem;
+  padding: 0;
+}
+
+/* Configuration Summary */
+.configSummary {
+  background: #f1f5f9;
+  border-top: 2px solid #e2e8f0;
+  padding: 1.5rem 2rem;
+  margin: 0;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.summaryLabel {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.summaryValue {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Payment Intent Status */
+.intentStatus {
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.intentDetails {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.intentRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.intentRow:last-child {
+  border-bottom: none;
+}
+
+.intentRow .label {
+  color: #6b7280;
+  font-weight: 600;
+  margin: 0;
+}
+
+.intentRow .value {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.intentRow .status {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.noIntent {
+  text-align: center;
+  color: #6b7280;
+}
+
+.noIntent p:first-child {
+  font-size: 1.125rem;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Payment Element */
+.paymentElementSection {
+  position: relative;
+}
+
+.paymentElementContainer {
+  min-height: 300px;
+  padding: 2rem;
+  background: #fafafa;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.paymentElementContainer:hover {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+.placeholder {
+  text-align: center;
+  color: #6b7280;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.placeholder p:first-of-type {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+  color: #374151;
+}
+
+.qfpayError {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 2px dashed #fca5a5;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Debug Section */
+.debugSection {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.debugInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.debugRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.debugRow:last-child {
+  border-bottom: none;
+}
+
+.debugLabel {
+  font-weight: 600;
+  color: #374151;
+}
+
+.debugValue {
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.debugSuccess {
+  color: #059669;
+}
+
+.debugError {
+  color: #dc2626;
+}
+
+.debugActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 180px;
+  gap: 0.5rem;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btnPrimary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.btnSuccess {
+  background: #10b981;
+  color: white;
+}
+
+.btnSuccess:hover:not(:disabled) {
+  background: #059669;
+}
+
+.btnSecondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 2px solid #e2e8f0;
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.btnDebug {
+  background: #f59e0b;
+  color: white;
+  font-size: 0.875rem;
+  min-width: auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.btnDebug:hover:not(:disabled) {
+  background: #d97706;
+}
+
+.btnIcon {
+  font-size: 1.25rem;
+}
+
+/* Test Information */
+.testInfo {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.testCards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.testCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.cardNumber {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.cardResult {
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.testNote {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.testNote p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  color: #374151;
+}
+
+.testNote ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #6b7280;
+}
+
+.testNote li {
+  margin-bottom: 0.25rem;
+}
+
+/* Transaction Log */
+.transactionLog {
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.logHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.logControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logCount {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.expandButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.expandButton:hover {
+  background: #f1f5f9;
+}
+
+.processingIndicator {
+  color: #3b82f6;
+  animation: pulse 1.5s ease-in-out infinite;
+  margin-left: 0.5rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.logContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  background: white;
+}
+
+.logList {
+  padding: 0;
+}
+
+.logEntry {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+.logEntry:hover {
+  background: #f8fafc;
+}
+
+.logEntry:last-child {
+  border-bottom: none;
+}
+
+.logEntryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.logIcon {
+  font-size: 1rem;
+}
+
+.logTimestamp {
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+}
+
+.logType {
+  background: #e2e8f0;
+  color: #475569;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.logMessage {
+  color: #1f2937;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Log Type Styles */
+.logSuccess {
+  border-left: 4px solid #10b981;
+}
+
+.logSuccess .logType {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.logError {
+  border-left: 4px solid #ef4444;
+}
+
+.logError .logType {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.logWarning {
+  border-left: 4px solid #f59e0b;
+}
+
+.logWarning .logType {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.logInfo {
+  border-left: 4px solid #3b82f6;
+}
+
+.logInfo .logType {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.noLogs {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6b7280;
+}
+
+.noLogsIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.noLogs p:first-of-type {
+  font-size: 1.125rem;
+  margin: 0 0 0.5rem 0;
+  color: #374151;
+}
+
+.noLogsHint {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.processingLog {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: #f0f9ff;
+  border-top: 1px solid #e0f2fe;
+  color: #0369a1;
+  font-weight: 500;
+}
+
+.logActions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-radius: 0 0 10px 10px;
+}
+
+.logActionButton {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logActionButton:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .demoContainer {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .configGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .testInfo {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .testCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .summaryGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .logHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1rem;
+  }
+  
+  .configGroup {
+    padding: 1rem;
+  }
+  
+  .logEntryHeader {
+    flex-wrap: wrap;
+  }
+}
