@@ -243,6 +243,83 @@ export async function createTokenIntent(customerId, appcode) {
 }
 
 /**
+ * Server action to generate mock token ID for testing
+ * In production, this would come from QFPay tokenization process
+ */
+export async function createMockToken() {
+  try {
+    // Generate a mock token ID that looks like QFPay format
+    const timestamp = Date.now()
+    const randomPart = Math.random().toString(36).substr(2, 16)
+    const mockTokenId = `tk_${timestamp}_${randomPart}`
+    
+    console.log('[Server] Generated mock token ID:', mockTokenId)
+    
+    return {
+      success: true,
+      token: {
+        token_id: mockTokenId,
+        customer_id: null,
+        created_at: new Date().toISOString(),
+        status: 'active',
+        type: 'card',
+        last4: '1096',
+        brand: 'mastercard',
+        exp_month: 12,
+        exp_year: new Date().getFullYear() + 2
+      }
+    }
+  } catch (error) {
+    console.error('[Server] Mock token generation failed:', error)
+    return {
+      success: false,
+      error: error.message
+    }
+  }
+}
+
+/**
+ * Server action to generate test product data
+ * Creates sample products for subscription testing
+ */
+export async function generateTestProducts() {
+  const baseProducts = [
+    {
+      name: 'Basic Monthly Plan',
+      type: 'recurring',
+      txamt: 999, // $9.99
+      txcurrcd: 'HKD',
+      interval: 'monthly',
+      interval_count: 1,
+      description: 'Basic subscription plan with monthly billing'
+    },
+    {
+      name: 'Premium Annual Plan', 
+      type: 'recurring',
+      txamt: 9999, // $99.99
+      txcurrcd: 'HKD',
+      interval: 'yearly',
+      interval_count: 1,
+      description: 'Premium subscription plan with annual billing'
+    },
+    {
+      name: 'Weekly Newsletter',
+      type: 'recurring',
+      txamt: 299, // $2.99
+      txcurrcd: 'HKD',
+      interval: 'weekly',
+      interval_count: 1,
+      description: 'Weekly newsletter subscription'
+    }
+  ]
+  
+  return {
+    success: true,
+    testProducts: baseProducts
+  }
+}
+
+/**
  * Server action to create real QFPay payment intent
  * Calls the actual QFPay API with proper authentication
  */
