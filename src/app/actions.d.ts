@@ -42,3 +42,19 @@ export declare function createPaymentIntent(
   }
   error?: string
 }>
+
+export declare function createMockToken(): Promise<{
+  success: boolean
+  token?: {
+    token_id: string
+    customer_id: string | null
+    created_at: string
+    status: string
+    type: string
+    last4: string
+    brand: string
+    exp_month: number
+    exp_year: number
+  }
+  error?: string
+}>

@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { generateQFPaySignature } from '../../../../actions'
 
-interface ProductItem {
-  product_id: string
-  quantity: number
-}
 
 /**
  * API endpoint to create QFPay subscription
@@ -42,7 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Prepare QFPay API request parameters
-    const requestParams: Record<string, any> = {
+    const requestParams: Record<string, unknown> = {
       customer_id: customer_id.toString(),
       token_id: token_id.toString(),
       products: products
@@ -61,18 +57,18 @@ export async function POST(request: NextRequest) {
     // For signature generation, we need to flatten the products array
     // Convert products array to QFPay expected format
     const signatureParams: Record<string, string> = {
-      customer_id: requestParams.customer_id,
-      token_id: requestParams.token_id
+      customer_id: requestParams.customer_id as string,
+      token_id: requestParams.token_id as string
     }
 
     // Add products to signature params (QFPay expects products as JSON string)
     signatureParams.products = JSON.stringify(requestParams.products)
     
     if (requestParams.total_billing_cycles) {
-      signatureParams.total_billing_cycles = requestParams.total_billing_cycles.toString()
+      signatureParams.total_billing_cycles = (requestParams.total_billing_cycles as number).toString()
     }
     if (requestParams.start_time) {
-      signatureParams.start_time = requestParams.start_time
+      signatureParams.start_time = requestParams.start_time as string
     }
 
     // Generate signature
@@ -87,15 +83,15 @@ export async function POST(request: NextRequest) {
 
     // Prepare form data for QFPay API
     const formData = new URLSearchParams()
-    formData.append('customer_id', requestParams.customer_id)
-    formData.append('token_id', requestParams.token_id)
+    formData.append('customer_id', requestParams.customer_id as string)
+    formData.append('token_id', requestParams.token_id as string)
     formData.append('products', JSON.stringify(requestParams.products))
     
     if (requestParams.total_billing_cycles) {
-      formData.append('total_billing_cycles', requestParams.total_billing_cycles.toString())
+      formData.append('total_billing_cycles', (requestParams.total_billing_cycles as number).toString())
     }
     if (requestParams.start_time) {
-      formData.append('start_time', requestParams.start_time)
+      formData.append('start_time', requestParams.start_time as string)
     }
 
     // Call QFPay subscription creation API
@@ -136,11 +132,11 @@ export async function POST(request: NextRequest) {
     // Return successful subscription creation response
     const subscription = {
       subscription_id: responseData.data?.subscription_id || responseData.subscription_id,
-      customer_id: requestParams.customer_id,
-      token_id: requestParams.token_id,
+      customer_id: requestParams.customer_id as string,
+      token_id: requestParams.token_id as string,
       products: requestParams.products,
-      total_billing_cycles: requestParams.total_billing_cycles || null,
-      start_time: requestParams.start_time || null,
+      total_billing_cycles: requestParams.total_billing_cycles as number || null,
+      start_time: requestParams.start_time as string || null,
       state: responseData.data?.state || responseData.state || 'ACTIVE',
       created_at: responseData.sysdtm,
       raw_response: responseData

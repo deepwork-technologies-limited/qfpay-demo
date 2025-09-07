@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { createCustomer, createPaymentIntent, createMockToken, generateTestProducts } from './actions'
+import { createCustomer, createPaymentIntent, createMockToken } from './actions'
 import styles from './styles.module.css'
 
 interface LogEntry {
@@ -437,7 +437,7 @@ export default function QFPayMinimal() {
   }
 
   // Create a product from sample data
-  const createProduct = async (productData: any) => {
+  const createProduct = async (productData: Product) => {
     if (!config.appcode) {
       setError('APPCODE is required for product creation')
       return
@@ -493,17 +493,22 @@ export default function QFPayMinimal() {
         throw new Error(result.error)
       }
 
+      if (!result.token) {
+        throw new Error('No token data returned')
+      }
+
+      const tokenData = result.token
       const tokenRecord = {
-        ...result.token,
+        ...tokenData,
         customer_id: customer?.customer_id || null
       }
 
       setToken(tokenRecord as Token)
-      addLog(`Mock token created: ${result.token.token_id}`, 'success')
-      addLog(`Token details: ${result.token.brand} ending in ${result.token.last4}`, 'info')
+      addLog(`Mock token created: ${tokenData.token_id}`, 'success')
+      addLog(`Token details: ${tokenData.brand} ending in ${tokenData.last4}`, 'info')
 
       // Auto-copy token ID to subscription form
-      setSubscriptionForm(prev => ({ ...prev, token_id: result.token.token_id }))
+      setSubscriptionForm(prev => ({ ...prev, token_id: tokenData.token_id }))
       addLog('Token ID auto-copied to subscription form', 'info')
 
     } catch (error) {
@@ -647,7 +652,7 @@ export default function QFPayMinimal() {
     try {
       addLog('Querying existing subscriptions', 'info')
 
-      const queryData = {
+      const queryData: Record<string, unknown> = {
         appcode: config.appcode,
         secretKey: config.secretKey,
         page: parseInt(queryForm.page) || 1,
@@ -1345,7 +1350,7 @@ export default function QFPayMinimal() {
       <div className={styles.actionSection}>
         <h4>🔄 Recurring Payment Testing</h4>
         <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '15px' }}>
-          Test QFPay's recurring billing by creating products and subscriptions
+          Test QFPay&apos;s recurring billing by creating products and subscriptions
         </p>
         
         {/* Quick Start Buttons */}
