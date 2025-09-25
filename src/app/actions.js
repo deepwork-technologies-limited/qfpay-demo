@@ -3,6 +3,24 @@
 import crypto from 'crypto'
 
 /**
+ * Get QFPay base URL based on environment
+ * @param {string} environment - 'qa', 'test', or 'live'
+ */
+function getQFPayBaseURL(environment = 'qa') {
+  switch (environment) {
+    case 'live':
+    case 'production':
+      return 'https://openapi-hk.qfapi.com'
+    case 'test':
+      return 'https://openapi-hk.qfapi.com'
+    case 'qa':
+    case 'sandbox':
+    default:
+      return 'https://openapi-int.qfapi.com'
+  }
+}
+
+/**
  * Server action to generate QFPay signature
  * Keeps client key secure on the server side
  * @param {Object} params - Parameters to sign
@@ -80,9 +98,9 @@ export async function generateQFPaySignature(params, appcode, algorithm = 'MD5',
  * Server action to create QFPay customer
  * For storing customer information and recurring payments
  */
-export async function createCustomer(customerData, appcode, secretKey = null) {
+export async function createCustomer(customerData, appcode, secretKey = null, environment = 'qa') {
   try {
-    const baseURL = 'https://openapi-int.qfapi.com'
+    const baseURL = getQFPayBaseURL(environment)
     const endpoint = '/customer/v1/create'
     
     // Prepare request parameters (as per QFPay customer API spec)
@@ -110,6 +128,7 @@ export async function createCustomer(customerData, appcode, secretKey = null) {
     })
     
     console.log('[Server] Request body (URL-encoded):', formData.toString())
+    console.log('[Server] Request url:', `${baseURL}${endpoint}`)
     
     // Make API request to QFPay with correct content-type
     const response = await fetch(`${baseURL}${endpoint}`, {
@@ -164,9 +183,9 @@ export async function createCustomer(customerData, appcode, secretKey = null) {
  * Server action to create QFPay token intent
  * For tokenized payments and card storage
  */
-export async function createTokenIntent(customerId, appcode) {
+export async function createTokenIntent(customerId, appcode, environment = 'qa') {
   try {
-    const baseURL = 'https://openapi-int.qfapi.com'
+    const baseURL = getQFPayBaseURL(environment)
     const endpoint = '/payment_element/v1/create_token_intent'
     
     // Prepare request parameters (as per QFPay token intent API spec)
@@ -323,9 +342,9 @@ export async function generateTestProducts() {
  * Server action to create real QFPay payment intent
  * Calls the actual QFPay API with proper authentication
  */
-export async function createPaymentIntent(amount, currency = 'HKD', appcode, secretKey = null, customerId = null, tokenExpiry = null) {
+export async function createPaymentIntent(amount, currency = 'HKD', appcode, secretKey = null, customerId = null, tokenExpiry = null, environment = 'qa') {
   try {
-    const baseURL = 'https://openapi-int.qfapi.com'
+    const baseURL = getQFPayBaseURL(environment)
     const endpoint = '/payment_element/v1/create_payment_intent'
     
     // Generate unique merchant trade number

@@ -243,9 +243,10 @@ export default function QFPayMinimal() {
       }
       
       const result = await createCustomer(
-        customerData, 
-        config.appcode, 
-        config.secretKey
+        customerData,
+        config.appcode,
+        config.secretKey,
+        config.environment
       )
       console.log('Customer Creation Result:', result)
       
@@ -298,12 +299,13 @@ export default function QFPayMinimal() {
       
       // Create real payment intent with customer ID and token expiry
       const result = await createPaymentIntent(
-        config.amount, 
-        config.currency, 
+        config.amount,
+        config.currency,
         config.appcode,
         config.secretKey,
         config.customerId || null,
-        config.tokenExpiry || null
+        config.tokenExpiry || null,
+        config.environment
       )
       console.log('Payment Intent Result:', result)
       if (!result.success) {
